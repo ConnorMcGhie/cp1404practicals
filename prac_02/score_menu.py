@@ -27,11 +27,16 @@ def get_score_status(score):
         return "Bad"
 
 
+def show_stars(score):
+    """Print stars equal to the score (rounded to nearest int)."""
+    print("*" * int(score))
+
+
 def main():
     MENU = """\n(G)et a valid score
-    (P)rint result
-    (Q)uit
-    """
+(P)rint result
+(S)how stars
+(Q)uit"""
 
     score = get_valid_score()
     print(MENU)
@@ -42,6 +47,8 @@ def main():
             score = get_valid_score()
         elif choice == "P":
             print(get_score_status(score))
+        elif choice == "S":
+            show_stars(score)
         else:
             print("Invalid option")
 
@@ -49,5 +56,7 @@ def main():
         choice = input(">>> ").upper()
 
     print("Farewell! Thanks for using the program.")
+
+
 
 main()
