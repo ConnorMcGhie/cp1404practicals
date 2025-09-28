@@ -21,7 +21,7 @@ i could attend seminars on days i dont work
 
 ## What are you currently doing poorly for practicals in this subject that you will change?
 
-i dont know twin, its week 2 and i haven't gotten feedback yet
+i dont know brochacho, its week 2 and i haven't gotten feedback yet
 
 ## What are you doing really well for practicals in this subject?
 
