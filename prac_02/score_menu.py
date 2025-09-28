@@ -3,8 +3,6 @@ CP1404/CP5632 - Practical
 Menu-driven program to work with scores
 """
 
-import random
-
 
 def get_valid_score():
     """Prompt the user until they enter a valid score (0–100 inclusive)."""
