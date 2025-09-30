@@ -6,6 +6,7 @@ a 50% chance it increases by 0 to 17.5%, and
 a 50% chance that it decreases by 0 to 5%.
 If the price rises above $100, or falls below $1, the program should end.
 The price should be displayed to the nearest cent (e.g. $33.59, not $33.5918232901)
+All output is written to a file.
 """
 import random
 
@@ -14,11 +15,14 @@ MAX_DECREASE = 0.05   # 5%
 MIN_PRICE = 1.0       # minimum allowed price
 MAX_PRICE = 100.0     # maximum allowed price
 INITIAL_PRICE = 10.0  # starting price
+FILENAME = "stock_prices.txt"
 
 price = INITIAL_PRICE
 number_of_days = 0
 
-print(f"Starting price: ${price:,.2f}")
+out_file = open(FILENAME, 'w')
+
+print(f"Starting price: ${price:,.2f}", file=out_file)
 
 while MIN_PRICE <= price <= MAX_PRICE:
     number_of_days += 1
@@ -32,4 +36,6 @@ while MIN_PRICE <= price <= MAX_PRICE:
         price_change = random.uniform(-MAX_DECREASE, 0)
 
     price *= (1 + price_change)
-    print(f"On day {number_of_days} price is: ${price:,.2f}")
+    print(f"On day {number_of_days} price is: ${price:,.2f}", file=out_file)
+
+out_file.close()
