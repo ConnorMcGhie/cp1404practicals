@@ -1,7 +1,7 @@
-# total_income_v3.py
+# total_income_v4.py
 """
 CP1404/CP5632 Practical
-Refactor variable name: months -> number_of_months
+Extract report printing into its own function
 """
 
 def main():
@@ -13,12 +13,14 @@ def main():
         income = float(input(f"Enter income for month {month}: "))
         incomes.append(income)
 
+    print_report(incomes)
+
+def print_report(incomes):
+    """Prints the income report given incomes list and number_of_months."""
     print("\nIncome Report\n-------------")
     total = 0
-    for month in range(1, number_of_months + 1):
-        income = incomes[month - 1]
+    for month, income in enumerate(incomes, 1):
         total += income
-        print("Month {:2} - Income: ${:10.2f} Total: ${:10.2f}".format(month, income, total))
-
+        print(f"Month {month:2} - Income: ${income:10.2f} Total: ${total:10.2f}")
 
 main()
