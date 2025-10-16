@@ -1,5 +1,5 @@
 """
-Wimbledon champions data processro
+Wimbledon champions data processor
 """
 
 FILEDATA = "wimbledon.csv"
