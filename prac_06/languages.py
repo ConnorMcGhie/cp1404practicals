@@ -1,7 +1,7 @@
 """
 CP1404 - Practical
 EST completion time: 30 minutes
-Actual time:
+Actual time: Around 30 minutes
 """
 from prac_06.programming_language import ProgrammingLanguage
 
