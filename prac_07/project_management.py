@@ -26,6 +26,8 @@ def main():
             save_projects(filename, projects)
         elif choice == "D":
             display_projects(projects)
+        elif choice == "F":
+            filter_projects_by_date(projects)
         else:
             print("Invalid choice")
 
@@ -42,6 +44,7 @@ def get_menu_choice():
     print("- (L)oad projects")
     print("- (S)ave projects")
     print("- (D)isplay projects")
+    print("- (F)ilter projects by date")
     print("- (Q)uit")
     return input(">>> ").upper()
 
@@ -83,6 +86,15 @@ def save_projects(filename, projects):
         for project in projects:
             print(f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t"
                   f"{project.priority}\t{project.cost_estimate}\t{project.completion}", file=out_file)
+
+
+def filter_projects_by_date(projects):
+    """Filter and display projects starting after a given date."""
+    date_str = input("Show projects that start after date (dd/mm/yyyy): ")
+    filter_date = datetime.strptime(date_str, "%d/%m/%Y").date()
+    filtered = [p for p in projects if p.starts_after(filter_date)]
+    for project in sorted(filtered, key=lambda x: x.start_date):
+        print(project)
 
 
 if __name__ == "__main__":
