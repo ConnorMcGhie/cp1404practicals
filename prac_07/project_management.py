@@ -21,18 +21,26 @@ def main():
         if choice == "L":
             filename = input("Filename to load projects from: ")
             projects = load_projects(filename)
+        elif choice == "S":
+            filename = input("Filename to save projects to: ")
+            save_projects(filename, projects)
         elif choice == "D":
             display_projects(projects)
         else:
             print("Invalid choice")
 
         choice = get_menu_choice()
+
+    save_choice = input(f"Would you like to save to {DEFAULT_FILENAME}? ").lower()
+    if save_choice.startswith("y"):
+        save_projects(DEFAULT_FILENAME, projects)
     print("Thank you for using custom-built project management software.")
 
 
 def get_menu_choice():
     """Display menu and get user choice."""
     print("- (L)oad projects")
+    print("- (S)ave projects")
     print("- (D)isplay projects")
     print("- (Q)uit")
     return input(">>> ").upper()
@@ -66,6 +74,15 @@ def display_projects(projects):
     print("Completed projects:")
     for project in complete:
         print(f"  {project}")
+
+
+def save_projects(filename, projects):
+    """Save projects to a tab-delimited text file."""
+    with open(filename, "w", encoding="utf-8") as out_file:
+        print("Name\tStart Date\tPriority\tCost Estimate\tCompletion", file=out_file)
+        for project in projects:
+            print(f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t"
+                  f"{project.priority}\t{project.cost_estimate}\t{project.completion}", file=out_file)
 
 
 if __name__ == "__main__":
