@@ -28,6 +28,8 @@ def main():
             display_projects(projects)
         elif choice == "F":
             filter_projects_by_date(projects)
+        elif choice == "A":
+            add_new_project(projects)
         else:
             print("Invalid choice")
 
@@ -45,6 +47,7 @@ def get_menu_choice():
     print("- (S)ave projects")
     print("- (D)isplay projects")
     print("- (F)ilter projects by date")
+    print("- (A)dd new project")
     print("- (Q)uit")
     return input(">>> ").upper()
 
@@ -95,6 +98,19 @@ def filter_projects_by_date(projects):
     filtered = [p for p in projects if p.starts_after(filter_date)]
     for project in sorted(filtered, key=lambda x: x.start_date):
         print(project)
+
+
+def add_new_project(projects):
+    """Prompt the user to add a new project."""
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date_str = input("Start date (dd/mm/yyyy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: $"))
+    completion = int(input("Percent complete: "))
+    start_date = datetime.strptime(start_date_str, "%d/%m/%Y").date()
+    new_project = Project(name, start_date, priority, cost_estimate, completion)
+    projects.append(new_project)
 
 
 if __name__ == "__main__":
