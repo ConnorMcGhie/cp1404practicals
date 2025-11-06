@@ -30,6 +30,8 @@ def main():
             filter_projects_by_date(projects)
         elif choice == "A":
             add_new_project(projects)
+        elif choice == "U":
+            update_project(projects)
         else:
             print("Invalid choice")
 
@@ -48,6 +50,7 @@ def get_menu_choice():
     print("- (D)isplay projects")
     print("- (F)ilter projects by date")
     print("- (A)dd new project")
+    print("- (U)pdate project")
     print("- (Q)uit")
     return input(">>> ").upper()
 
@@ -111,6 +114,22 @@ def add_new_project(projects):
     start_date = datetime.strptime(start_date_str, "%d/%m/%Y").date()
     new_project = Project(name, start_date, priority, cost_estimate, completion)
     projects.append(new_project)
+
+
+def update_project(projects):
+    """Allow the user to update a project's completion or priority."""
+    for i, project in enumerate(projects):
+        print(f"{i} {project}")
+    choice = int(input("Project choice: "))
+    project = projects[choice]
+    print(project)
+    new_completion = input("New Percentage: ")
+    new_priority = input("New Priority: ")
+
+    if new_completion:
+        project.completion = int(new_completion)
+    if new_priority:
+        project.priority = int(new_priority)
 
 
 if __name__ == "__main__":
