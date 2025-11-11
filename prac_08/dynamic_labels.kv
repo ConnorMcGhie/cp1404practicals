@@ -1,0 +1,15 @@
+BoxLayout:
+    orientation: 'vertical'
+
+    BoxLayout:
+        id: entries_box
+        orientation: 'vertical'
+
+    BoxLayout:
+
+        Button:
+            text: "Create Labels"
+            on_press: app.create_labels()
+        Button:
+            text: "Clear Labels"
+            on_press: app.clear_all()
